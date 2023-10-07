@@ -1,6 +1,6 @@
 import random
 preguntas_respuestas = {
-    "¿Cuál es la capital de la luna?": {
+    "Relaciona el eclipse correspondiente": {
         "opciones": ["Londres", "París", "Berlín", "Madrid"],
         "respuesta_correcta": "París"
     },
