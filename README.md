@@ -1,13 +1,5 @@
 # Proy_Eclipse
 
-
-![Alt text](image.png)
-
-- Vamos a mover la luna para generar un eclipse.
-
-![Alt text](image-1.png)
-
-
 ## How to run the game
 
 If you want to see the game code and how it runs and works, you will have to clone the repository with the following command.
