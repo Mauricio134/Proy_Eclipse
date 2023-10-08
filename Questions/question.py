@@ -1,4 +1,14 @@
-import questiondb2
+import os
+import importlib
+ruta_directorio = os.path.abspath(os.path.join(os.path.dirname(__file__), "DB"))
+archivos_en_directorio = os.listdir(ruta_directorio)
+archivos_py = [archivo for archivo in archivos_en_directorio if archivo.endswith(".py")]
+
+modulos_importados = []
+for archivo in archivos_py:
+    nombre_modulo = os.path.splitext(archivo)[0]
+    modulo = importlib.import_module(f"DB.{nombre_modulo}")
+    modulos_importados.append(modulo)
 
 class Question:
     def __init__(self,contexto,pregunta,opciones,respuesta,mensaje_i, mensaje_c):
@@ -8,7 +18,7 @@ class Question:
         self.respuesta = respuesta
         self.mensaje_i = mensaje_i
         self.mensaje_c = mensaje_c
-cont,preg,opc,res, meni,menc = questiondb2.obtener_pregunta_aleatoria()
+cont,preg,opc,res, meni,menc = modulos_importados[1].obtener_pregunta_aleatoria()
 Pregunta = Question(cont,preg,opc,res, meni, menc)
 print(f"Pregunta: {Pregunta.contexto}")
 print(f"Pregunta: {Pregunta.pregunta}")
