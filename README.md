@@ -1,11 +1,5 @@
 # Proy_Eclipse
 README TEST
 
-Bueno ...
-
-![Alt text](image.png)
-
-- Vamos a mover la luna para generar un eclipse.
-
-![Alt text](image-1.png)
-
+We created a game based in pygame to teach more about eclipses.
+To run the code, we need to install python and pygame.
