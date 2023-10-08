@@ -56,3 +56,6 @@ def obtener_pregunta_aleatoria():
     mensa_c = datos["mensaje_c"]
     random.shuffle(opciones)  # Mezcla las opciones aleatoriamente
     return contexto,pregunta, opciones, respuesta_correcta, mensa_i, mensa_c
+
+def suma():
+    return 1
