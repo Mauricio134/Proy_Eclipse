@@ -80,12 +80,18 @@ def escena_menu():
 
 def escena_juego():
     # Lógica del juego
-    # Dibuja los elementos del juego en la pantalla
+    # Dibujar los elementos del juego en la pantalla
     # Limpiar el escenario
-    screen.fill((0, 0, 0))
+    # Cargar las imágenes
     imagenLogo = pygame.image.load('src/luna.png')
+    # Ajustar el tamaño de la imagen
+    imagenLogo = pygame.transform.scale(imagenLogo, (50, 50))  # Nuevo tamaño: (50, 50)
     spsheet = pygame.image.load('src/sol.png')
+
+    clock = pygame.time.Clock()
+    FPS = 15  # Frames por segundo
     running = True
+    scroll_pos = 0  # Posición inicial de la barra de desplazamiento
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -95,14 +101,23 @@ def escena_juego():
                 # Verificar si se hizo clic en el botón "Regresar"
                 if 50 <= x <= 150 and alto-200 <= y <= alto-150:
                     return 'REGRESAR'
-        # Dibujar el Logo
-        screen.blit(imagenLogo,(50,50))
+                # Verificar si se hizo clic en la barra de desplazamiento
+                elif 50 <= x <= 150 and alto-100 <= y <= alto-50:
+                    scroll_pos = x  # Actualizar la posición de la barra de desplazamiento
+
+        # Limpiar el escenario antes de dibujar el nuevo frame
+        screen.fill((0, 0, 0))
+
+        # Dibujar el Logo en una posición que depende de la barra de desplazamiento
+        screen.blit(imagenLogo,(scroll_pos,50))
         screen.blit(spsheet,(200,200))
         # Crear un botón "Regreso"
         font = pygame.font.Font(None, 36)
         pygame.draw.rect(screen, RED, (50, alto-200, 100, 50))
         texto_regresar = font.render("Regresar", True, WHITE)
         screen.blit(texto_regresar, (50, alto-200))
+        # Crear una barra de desplazamiento
+        pygame.draw.rect(screen, RED, (50, alto-100, 100, 10))
         pygame.display.flip()
 
 escena_actual = escena_menu
