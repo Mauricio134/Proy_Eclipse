@@ -20,6 +20,8 @@ WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 
 def escena_menu():
+    # Limpiar el escenario
+    screen.fill((0, 0, 0))
     imagenLogo = pygame.image.load('src/logoSpaceApp.png')
     spsheet = pygame.image.load('src/moonSpriteS.png')
     animationArray = []
@@ -90,30 +92,17 @@ def escena_juego():
                 return 'QUIT'
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = pygame.mouse.get_pos()
-                # Verificar si se hizo clic en el botón "Jugar"
-                if 300 <= x <= 500 and 250 <= y <= 300:
-                    return 'JUGAR'
-                # Verificar si se hizo clic en el botón "Salir"
-                elif 300 <= x <= 500 and 450 <= y <= 500:
-                    return 'QUIT'
+                # Verificar si se hizo clic en el botón "Regresar"
+                if 50 <= x <= 150 and alto-200 <= y <= alto-150:
+                    return 'REGRESAR'
         # Dibujar el Logo
-        posLogo = (175, 50)
         screen.blit(imagenLogo,(50,50))
         screen.blit(spsheet,(200,200))
-        screen.blit(imagenLogo,posLogo)
-        # Crear un botón "Jugar"
-        pygame.draw.rect(screen, RED, (300, 250, 200, 50))
+        # Crear un botón "Regreso"
         font = pygame.font.Font(None, 36)
-        texto_jugar = font.render("Jugar", True, WHITE)
-        screen.blit(texto_jugar, (350, 260))
-         # Crear un botón "Opciones"
-        pygame.draw.rect(screen, RED, (300, 350, 200, 50))
-        texto_salir = font.render("Opciones", True, WHITE)
-        screen.blit(texto_salir, (340, 360))
-        # Crear un botón "Salir"
-        pygame.draw.rect(screen, RED, (300, 450, 200, 50))
-        texto_salir = font.render("Salir", True, WHITE)
-        screen.blit(texto_salir, (350, 460))
+        pygame.draw.rect(screen, RED, (50, alto-200, 100, 50))
+        texto_regresar = font.render("Regresar", True, WHITE)
+        screen.blit(texto_regresar, (50, alto-200))
         pygame.display.flip()
 
 escena_actual = escena_menu
@@ -124,5 +113,7 @@ while True:
         break
     elif resultado == 'JUGAR':
         escena_actual = escena_juego
+    elif resultado == 'REGRESAR':
+        escena_actual = escena_menu
 
 pygame.quit()
