@@ -79,19 +79,28 @@ def escena_menu():
         clock.tick(FPS) 
 
 def escena_juego():
-    # Lógica del juego
-    # Dibujar los elementos del juego en la pantalla
-    # Limpiar el escenario
     # Cargar las imágenes
-    imagenLogo = pygame.image.load('src/luna.png')
-    # Ajustar el tamaño de la imagen
-    imagenLogo = pygame.transform.scale(imagenLogo, (50, 50))  # Nuevo tamaño: (50, 50)
-    spsheet = pygame.image.load('src/sol.png')
+    imGLuna = pygame.image.load('src/luna.png')
+    imGLuna = pygame.transform.scale(imGLuna, (50, 50))  # Nuevo tamaño: (50, 50)
+    imGSol = pygame.image.load('src/sol.png')
+    imGSol = pygame.transform.scale(imGSol, (200, 200))  # Nuevo tamaño: (50, 50)
+
+    spsheet = pygame.image.load('src/Tierra.png')
+    animationArray = []
+    numFrames = 50
+    frameWidth = 100
+    frameHeight = 100
+    posx = 0
+    for i in range(numFrames):
+        f1 = spsheet.subsurface(posx, 0, frameWidth, frameHeight)
+        animationArray.append(f1)
+        posx+= 100
 
     clock = pygame.time.Clock()
-    FPS = 15  # Frames por segundo
+    FPS = 5  # Frames por segundo
     running = True
     scroll_pos = 0  # Posición inicial de la barra de desplazamiento
+    current_frame = 0
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -107,10 +116,28 @@ def escena_juego():
 
         # Limpiar el escenario antes de dibujar el nuevo frame
         screen.fill((0, 0, 0))
-
+        # Dibujar una elipse
+        color = (255, 255, 255)  # Color de la elipse en formato RGB
+        rectOne = pygame.Rect(75, (alto/2)-10, 250, 50+25) 
+        rectTwo = pygame.Rect(200, (alto/2)-50, 600, 100+50) 
+        thickness = 2  # Grosor del borde en píxeles
+        pygame.draw.ellipse(screen, color, rectOne, thickness)
+        pygame.draw.ellipse(screen, color, rectTwo, thickness)
+        # Definir los puntos inicial y final de la línea
+        # Dibujar la línea
+        start_pos = (75, (alto/2)+25)
+        end_pos = (800, (alto/2)+25)
+        pygame.draw.line(screen, color, start_pos, end_pos, thickness)
+        # Dibujar el frame actual
+        tierraPos = (200-50, (alto/2)-50)
+        screen.blit(animationArray[current_frame],tierraPos)
+        # Actualizar el frame actual
+        current_frame += 1
+        if current_frame >= numFrames:
+            current_frame = 0
         # Dibujar el Logo en una posición que depende de la barra de desplazamiento
-        screen.blit(imagenLogo,(scroll_pos,50))
-        screen.blit(spsheet,(200,200))
+        screen.blit(imGLuna,(scroll_pos,50))
+        screen.blit(imGSol,(200+200,(alto/2)-100))
         # Crear un botón "Regreso"
         font = pygame.font.Font(None, 36)
         pygame.draw.rect(screen, RED, (50, alto-200, 100, 50))
@@ -118,7 +145,9 @@ def escena_juego():
         screen.blit(texto_regresar, (50, alto-200))
         # Crear una barra de desplazamiento
         pygame.draw.rect(screen, RED, (50, alto-100, 100, 10))
+        
         pygame.display.flip()
+        clock.tick(FPS) 
 
 escena_actual = escena_menu
 
