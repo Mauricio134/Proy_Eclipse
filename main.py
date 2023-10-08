@@ -99,7 +99,7 @@ def escena_juego():
     clock = pygame.time.Clock()
     FPS = 5  # Frames por segundo
     running = True
-    scroll_pos = 0  # Posición inicial de la barra de desplazamiento
+    scroll_pos = 75  # Posición inicial de la barra de desplazamiento
     current_frame = 0
     while running:
         for event in pygame.event.get():
@@ -136,7 +136,7 @@ def escena_juego():
         if current_frame >= numFrames:
             current_frame = 0
         # Dibujar el Logo en una posición que depende de la barra de desplazamiento
-        screen.blit(imGLuna,(scroll_pos,50))
+        screen.blit(imGLuna,(scroll_pos,(alto/2)))
         screen.blit(imGSol,(200+200,(alto/2)-100))
         # Crear un botón "Regreso"
         font = pygame.font.Font(None, 36)
