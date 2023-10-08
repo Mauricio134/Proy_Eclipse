@@ -1,4 +1,4 @@
-import questiondb1
+import questiondb2
 
 class Question:
     def __init__(self,contexto,pregunta,opciones,respuesta,mensaje_i, mensaje_c):
@@ -8,7 +8,7 @@ class Question:
         self.respuesta = respuesta
         self.mensaje_i = mensaje_i
         self.mensaje_c = mensaje_c
-cont,preg,opc,res, meni,menc = questiondb1.obtener_pregunta_aleatoria()
+cont,preg,opc,res, meni,menc = questiondb2.obtener_pregunta_aleatoria()
 Pregunta = Question(cont,preg,opc,res, meni, menc)
 print(f"Pregunta: {Pregunta.contexto}")
 print(f"Pregunta: {Pregunta.pregunta}")
