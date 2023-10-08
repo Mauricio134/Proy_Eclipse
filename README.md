@@ -1,11 +1,11 @@
 # Proy_Eclipse
 Bueno ...
 
-![Alt text](./pictureR/image.png)
+![Alt text](image.png)
 
 - Vamos a mover la luna para generar un eclipse.
 
-![Alt text](./pictureR/image-1.png)
+![Alt text](image-1.png)
 
 
 ## How to run the game
