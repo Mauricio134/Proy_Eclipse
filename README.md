@@ -3,10 +3,25 @@ Bueno ...
 
 ![Alt text](./pictureR/image.png)
 
-- Vamos a mover la luna para generar un eclipse.
+- POSITION ECLIPSE
 
 ![Alt text](./pictureR/image-1.png)
 
+- QUIZ
+
+![Alt text](./pictureR/image-4.png)
+
+- DATE-QUIZ
+
+![Alt text](./pictureR/image-5.png)
+
+- MATCH
+
+![Alt text](./pictureR/image-6.png)
+
+- LOOK FOR THE GLASSES
+
+![Alt text](./pictureR/image-7.png)
 
 ## How to run the game
 

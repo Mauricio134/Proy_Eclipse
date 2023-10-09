@@ -107,7 +107,7 @@ def escena_MiniGames():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = pygame.mouse.get_pos()
                 # Verificar si se hizo clic en el botón "Jugar"
-                if 50 <= x <= 150 and alto-75 <= y <= alto-25:
+                if 50 <= x <= 300 and alto-75 <= y <= alto-25:
                     return 'REGRESAR'
                 elif 50 <= x <= 300 and 250 <= y <= 300:
                     return 'MOON-POS'
@@ -133,7 +133,7 @@ def escena_MiniGames():
         # Crear un botón "JuegoMaycol"
         pygame.draw.rect(screen, RED, (50, 250, 250, 50))
         font = pygame.font.Font(None, 36)
-        texto_jugar = font.render("Posicion del Eclipse", True, WHITE)
+        texto_jugar = font.render("Position eclipse", True, WHITE)
         screen.blit(texto_jugar, (50, 260))
         # Crear un botón "JuegoChega"
         pygame.draw.rect(screen, RED, (350, 250, 200, 50))
@@ -757,7 +757,7 @@ def escena_FindObj():
                     if correct_object.check_collision(pos):
                         show_message("Congratulations! You found Wallo's glasses.")
                         congratulations_sound.play()  # Reproduce el sonido de felicitaciones
-                        congratulations_sound.set_volume(0.2)  # Establecer el volumen al 50%
+                        congratulations_sound.set_volume(0.1)  # Establecer el volumen al 50%
                         game_over = True
                         running = False
 
