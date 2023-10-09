@@ -107,10 +107,14 @@ def escena_MiniGames():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = pygame.mouse.get_pos()
                 # Verificar si se hizo clic en el botón "Jugar"
-                if 50 <= x <= 150 and alto-200 <= y <= alto-150:
+                if 50 <= x <= 150 and alto-100 <= y <= alto-50:
                     return 'REGRESAR'
+                elif 50 <= x <= 300 and 250 <= y <= 300:
+                    return 'MOON-POS'
                 elif 350 <= x <= 550 and 250 <= y <= 300:
                     return 'QUIZ-CH'
+                elif 50 <= x <= 250 and 350 <= y <= 400:
+                    return 'QUIZ-GA'
 
         # Dibujar el frame actual
         posLuna = (190, (alto/2)-100-100)
@@ -126,16 +130,20 @@ def escena_MiniGames():
         pygame.draw.rect(screen, RED, (50, 250, 250, 50))
         font = pygame.font.Font(None, 36)
         texto_jugar = font.render("Posicion del Eclipse", True, WHITE)
-        screen.blit(texto_jugar, (50, 250))
-         # Crear un botón "JuegoChega"
+        screen.blit(texto_jugar, (50, 260))
+        # Crear un botón "JuegoChega"
         pygame.draw.rect(screen, RED, (350, 250, 200, 50))
         texto_Quiz = font.render("Quiz", True, WHITE)
         screen.blit(texto_Quiz, (350, 260))
+        # Crear un botón "JuegoGabo"
+        pygame.draw.rect(screen, RED, (50, 350, 200, 50))
+        texto_Quiz = font.render("QuizDate", True, WHITE)
+        screen.blit(texto_Quiz, (50, 360))
          # Crear un botón "Regreso"
         font = pygame.font.Font(None, 36)
-        pygame.draw.rect(screen, RED, (50, alto-200, 150, 50))
+        pygame.draw.rect(screen, RED, (50, alto-100, 150, 50))
         texto_regresar = font.render("Regresar", True, WHITE)
-        screen.blit(texto_regresar, (50, alto-200))
+        screen.blit(texto_regresar, (50, alto-75))
 
         pygame.display.flip()
         clock.tick(FPS) 
@@ -314,6 +322,104 @@ def escena_QuizCh():
         pygame.display.flip()
     return 'REGRESAR'
 
+def escena_QuizGa():
+    # Limpiar el escenario
+    pygame.font.init()
+    window_size = (800, 600)
+    screen = pygame.display.set_mode(window_size)
+    screen.fill((0, 0, 0))
+    pygame.display.set_caption("Answer please")
+
+    opcion_1_imagen = pygame.image.load("respuesta_1.jpg")
+    opcion_1_imagen = pygame.transform.scale(opcion_1_imagen, (200, 200))
+    opcion_2_imagen = pygame.image.load("respuesta_2.jpg")
+    opcion_2_imagen = pygame.transform.scale(opcion_2_imagen, (300, 200))
+
+    # Posiciones de las imágenes
+    posicion_opcion_1 = opcion_1_imagen.get_rect()
+    posicion_opcion_2 = opcion_2_imagen.get_rect()
+    posicion_opcion_1.topleft = (100, 300)
+    posicion_opcion_2.topleft = (450, 300)
+
+    countries = [
+        {"name": "Peru", "sunrise": "06:00", "sunset": "18:00"},
+        {"name": "Spain", "sunrise": "07:30", "sunset": "20:30"},
+        {"name": "Japan", "sunrise": "04:30", "sunset": "18:30"},
+        {"name": "United States", "sunrise": "06:00", "sunset": "20:00"},
+        {"name": "Canada", "sunrise": "05:00", "sunset": "21:00"},
+        {"name": "Brazil", "sunrise": "05:30", "sunset": "18:00"},
+        {"name": "Argentina", "sunrise": "07:30", "sunset": "20:30"},
+        {"name": "Australia", "sunrise": "06:00", "sunset": "18:00"},
+        {"name": "New Zealand", 	"sunrise":"06:00","sunset":"20:00"},
+        {"name":"China","sunrise":"05:00","sunset":"19:00"},
+        {"name":"India","sunrise":"06:00","sunset":"18:30"},
+        {"name":"Russia","sunrise":"04:30","sunset":"21:00"},
+        {"name":"South Africa","sunrise":"06:30","sunset":"18:00"},
+        {"name":"Mexico","sunrise":"07:00","sunset":"20:00"},
+        {"name":"Colombia","sunrise":"06:00","sunset":"18:00"},
+        {"name":"France","sunrise":"08:30","sunset":"17:30"},
+        {"name":"Italy","sunrise":"07:30","sunset":"16:30"},
+        {"name":"Germany","sunrise":"08:00","sunset":"16:00"},
+        {"name":"Indonesia","sunrise":"05:30","sunset":"18:00"},
+        {"name":"Chile","sunrise":"07:15","sunset":"20:45"},
+        {"name":	"Egypt", 	"sunrise":"05:45","sunset":"17:45"},
+        {"name":	"United Kingdom",	"sunrise":"08:15","sunset":"16:15"},
+        {"name":	"Greece",	"sunrise":"07:15","sunset":"17:15"},
+        {"name":	"Turkey",	"sunrise":"07:45","sunset":"17:45"},
+        {"name":	"Norway",	"sunrise":"09:15","sunset":"15.15"},
+        {"name":	"Sweden",	"sunrise":"08.45","sunset":"14.45"},
+        {"name":	"Finland",	"sunrise":"09.15","sunset":"15.15"},
+        {"name":	"Denmark",	"sunrise":"08.45","sunset":"15.45"},
+        {"name":	"Ireland",	"sunrise":"08.45","sunset":"16.15"}
+    ]
+    country = random.choice(countries)
+    random_time = "{:02d}:{:02d}".format(random.randint(0, 23), random.randint(0, 59))
+
+    es_de_dia = country["sunrise"] < random_time < country["sunset"]
+
+    font = pygame.font.Font(None, 32)
+    line1_text = font.render("In {} sunrise is at {} and sunset is at {},".format(country["name"], country  ["sunrise"], country["sunset"]), True, (255, 255, 255))
+    line2_text = font.render("if the time is {}, what type of eclipse would it be possible to see?".format  (random_time), True, (255, 255, 255))
+
+    correct_answer_text = font.render("Well done! You've selected the correct option.", True, (0, 255, 0))
+    incorrect_answer_text = font.render("Sorry, you've selected the incorrect option.", True, (255, 0, 0))
+    show_answer = False
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                pos = pygame.mouse.get_pos()
+                if posicion_opcion_1.collidepoint(pos):
+                    if not es_de_dia:
+                        respuesta_texto = correct_answer_text
+                        running = False
+                    else:
+                        respuesta_texto = incorrect_answer_text
+                    show_answer = True
+                elif posicion_opcion_2.collidepoint(pos):
+                    if es_de_dia:
+                        respuesta_texto = correct_answer_text
+                        running = False
+                    else:
+                        respuesta_texto = incorrect_answer_text
+                    show_answer = True
+                    
+        screen.fill((0, 0, 0))
+        screen.blit(opcion_1_imagen, posicion_opcion_1)
+        screen.blit(opcion_2_imagen, posicion_opcion_2)
+        # Muestra texto en la pantalla
+        screen.blit(line1_text, (window_size[0] / 2 - line1_text.get_width() / 2, window_size[1] / 5 -  line1_text.get_height() / 2 - line2_text.get_height()))
+        screen.blit(line2_text, (window_size[0] / 2 - line2_text.get_width() / 2, window_size[1] / 5 -  line2_text.get_height() / 2))
+        if show_answer:
+            screen.blit(respuesta_texto, (window_size[0] / 2 - respuesta_texto.get_width() / 2, window_size[1]  - respuesta_texto.get_height() - 20))
+        pygame.display.flip()
+        if running == False:
+            time.sleep(2)
+    return 'REGRESAR'
+
 def escena_juego():
     # Cargar las imágenes
     imGLuna = pygame.image.load('src/luna.png')
@@ -333,7 +439,7 @@ def escena_juego():
         posx+= 100
 
     clock = pygame.time.Clock()
-    FPS = 5  # Frames por segundo
+    FPS = 10  # Frames por segundo
     running = True
     scroll_pos = 75  # Posición inicial de la barra de desplazamiento
     current_frame = 0
@@ -395,7 +501,11 @@ while True:
         escena_actual = escena_MiniGames
     elif resultado == 'REGRESAR':
         escena_actual = escena_menu
+    elif resultado == 'MOON-POS':
+        escena_actual = escena_juego
     elif resultado == 'QUIZ-CH':
         escena_actual = escena_QuizCh
+    elif resultado == 'QUIZ-GA':
+        escena_actual = escena_QuizGa
 
 pygame.quit()
