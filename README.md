@@ -23,6 +23,10 @@ Bueno ...
 
 ![Alt text](./pictureR/image-7.png)
 
+- QUESTION
+
+![Alt text](./pictureR/image-8.png)
+
 ## How to run the game
 
 If you want to see the game code and how it runs and works, you will have to clone the repository with the following command.
