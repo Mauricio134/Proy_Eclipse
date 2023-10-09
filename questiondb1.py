@@ -3,38 +3,37 @@ import random
 import sys
 
 pygame.init()
-
 # Configuración de la ventana
 window_size = (800, 600)
 screen = pygame.display.set_mode(window_size)
 pygame.display.set_caption("Juego de Eclipse")
-
+pathSrc = "./src/img-Osc/"
 # Carga de imágenes de las opciones
 imagen_ancho = 200
 imagen_alto = 100
-opcion_1_imagen = pygame.image.load("respuesta_1.jpg")
+opcion_1_imagen = pygame.image.load(f"{pathSrc}respuesta_1.jpg")
 opcion_1_imagen = pygame.transform.scale(opcion_1_imagen, (imagen_ancho, imagen_alto))
-opcion_2_imagen = pygame.image.load("respuesta_2.jpg")
+opcion_2_imagen = pygame.image.load(f"{pathSrc}respuesta_2.jpg")
 opcion_2_imagen = pygame.transform.scale(opcion_2_imagen, (imagen_ancho, imagen_alto))
-opcion_3_imagen = pygame.image.load("respuesta_3.jpg")
+opcion_3_imagen = pygame.image.load(f"{pathSrc}respuesta_3.jpg")
 opcion_3_imagen = pygame.transform.scale(opcion_3_imagen, (imagen_ancho, imagen_alto))
-opcion_4_imagen = pygame.image.load("respuesta_4.jpg")
+opcion_4_imagen = pygame.image.load(f"{pathSrc}respuesta_4.jpg")
 opcion_4_imagen = pygame.transform.scale(opcion_4_imagen, (imagen_ancho, imagen_alto))
-opcion_5_imagen = pygame.image.load("respuesta_5.jpg")
+opcion_5_imagen = pygame.image.load(f"{pathSrc}respuesta_5.jpg")
 opcion_5_imagen = pygame.transform.scale(opcion_5_imagen, (imagen_ancho, imagen_alto))
-opcion_6_imagen = pygame.image.load("respuesta_6.jpg")
+opcion_6_imagen = pygame.image.load(f"{pathSrc}respuesta_6.jpg")
 opcion_6_imagen = pygame.transform.scale(opcion_6_imagen, (imagen_ancho, imagen_alto))
-cartas_1_image = pygame.image.load("carta_1.png")
+cartas_1_image = pygame.image.load(f"{pathSrc}carta_1.png")
 cartas_1_image = pygame.transform.scale(cartas_1_image, (imagen_ancho + 30, imagen_alto + 30))
-cartas_2_image = pygame.image.load("carta_2.png")
+cartas_2_image = pygame.image.load(f"{pathSrc}carta_2.png")
 cartas_2_image = pygame.transform.scale(cartas_2_image, (imagen_ancho + 30, imagen_alto + 30))
-cartas_3_image = pygame.image.load("carta_3.png")
+cartas_3_image = pygame.image.load(f"{pathSrc}carta_3.png")
 cartas_3_image = pygame.transform.scale(cartas_3_image, (imagen_ancho + 30, imagen_alto + 30))
-cartas_4_image = pygame.image.load("carta_4.png")
+cartas_4_image = pygame.image.load(f"{pathSrc}carta_4.png")
 cartas_4_image = pygame.transform.scale(cartas_4_image, (imagen_ancho + 30, imagen_alto + 30))
-cartas_5_image = pygame.image.load("carta_5.png")
+cartas_5_image = pygame.image.load(f"{pathSrc}carta_5.png")
 cartas_5_image = pygame.transform.scale(cartas_5_image, (imagen_ancho + 30, imagen_alto + 30))
-cartas_6_image = pygame.image.load("carta_6.png")
+cartas_6_image = pygame.image.load(f"{pathSrc}carta_6.png")
 cartas_6_image = pygame.transform.scale(cartas_6_image, (imagen_ancho + 30, imagen_alto + 30))
 
 eclipses = [opcion_1_imagen, opcion_2_imagen, opcion_3_imagen, opcion_4_imagen, opcion_5_imagen, opcion_6_imagen]
