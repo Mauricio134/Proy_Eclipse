@@ -15,7 +15,7 @@ window_size = (ancho, alto)
 screen = pygame.display.set_mode(window_size)
 pygame.display.set_caption("Juego de Eclipse")
 running = True
-
+pathSrc = "./src/"
 clock = pygame.time.Clock()
 
 # Colores
@@ -213,7 +213,8 @@ def escena_QuizCh():
     # Limpiar el escenario
     screen.fill((0, 0, 0))
     #################################################################### TRANSICION
-    ruta_imagen = os.path.join(dir_actual, 'images', 'desktop-wallpaper-dark-night-sky-black-dark-night .jpg')
+    # ruta_imagen = os.path.join(dir_actual, 'images', 'desktop-wallpaper-dark-night-sky-black-dark-night .jpg')
+    ruta_imagen = f'{pathSrc}BG-estrellada.jpg'
 
     background = pygame.image.load(ruta_imagen)
     font = pygame.font.Font(None, 36)
@@ -274,7 +275,6 @@ def escena_QuizCh():
 
     # Load the background image
     dir_actual = os.getcwd()
-    ruta_imagen = os.path.join(dir_actual, 'images', 'desktop-wallpaper-dark-night-sky-black-dark-night .jpg')
     background = pygame.image.load(ruta_imagen)
 
     running = True
@@ -330,9 +330,9 @@ def escena_QuizGa():
     screen.fill((0, 0, 0))
     pygame.display.set_caption("Answer please")
 
-    opcion_1_imagen = pygame.image.load("respuesta_1.jpg")
+    opcion_1_imagen = pygame.image.load(f"{pathSrc}respuesta_1.jpg")
     opcion_1_imagen = pygame.transform.scale(opcion_1_imagen, (200, 200))
-    opcion_2_imagen = pygame.image.load("respuesta_2.jpg")
+    opcion_2_imagen = pygame.image.load(f"{pathSrc}respuesta_2.jpg")
     opcion_2_imagen = pygame.transform.scale(opcion_2_imagen, (300, 200))
 
     # Posiciones de las imágenes
