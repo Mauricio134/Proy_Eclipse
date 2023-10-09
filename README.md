@@ -49,3 +49,8 @@ unzip and run the code that is main.py
 
 - NOTE: If we want to run the 'main.py' file we have to have python installed on our pc https://www.python.org/downloads/
 
+If you don't have python installed, don't worry, you can use the executable found in the repository, just run it
+
+```bash
+    main.exe
+```
