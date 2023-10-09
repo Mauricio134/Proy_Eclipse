@@ -1,7 +1,7 @@
 import pygame
 import random
 from pygame.locals import *
-
+#CHECK
 pygame.init()
 pygame.font.init()
 

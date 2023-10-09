@@ -1,5 +1,6 @@
 import os
 import importlib
+#DELETE
 ruta_directorio = os.path.abspath(os.path.join(os.path.dirname(__file__), "DB"))
 archivos_en_directorio = os.listdir(ruta_directorio)
 archivos_py = [archivo for archivo in archivos_en_directorio if archivo.endswith(".py")]

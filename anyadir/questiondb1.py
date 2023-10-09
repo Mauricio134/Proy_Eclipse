@@ -1,7 +1,7 @@
 import pygame
 import random
 import sys
-
+#CHECK
 pygame.init()
 # Configuración de la ventana
 window_size = (800, 600)

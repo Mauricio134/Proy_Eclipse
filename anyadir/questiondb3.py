@@ -3,7 +3,7 @@ import random
 import os
 import pandas as pd
 import time
-
+#CHECK
 dir_actual = os.getcwd()
 ruta_al_csv = os.path.join(dir_actual, 'countrydb','test.csv')
 
