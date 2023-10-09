@@ -67,8 +67,6 @@ correct_answer_text = font.render("Well done! You've selected the correct option
 incorrect_answer_text = font.render("Sorry, you've selected the incorrect option.", True, (255, 0, 0))
 show_answer = False
 
-
-
 running = True
 while running:
     for event in pygame.event.get():
